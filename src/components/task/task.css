@@ -1,0 +1,41 @@
+.task {
+  width: 240px;
+  margin-top: 5px;
+  border: solid 2px #728fa7;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+}
+
+.task .wrap {
+  display: flex;
+  justify-content: space-between;
+  background: #728fa7;
+  color: white;
+  padding: 5px;
+}
+
+.task .title {
+  width: 100%;
+  font-family: Roboto;
+  font-size: 14px;
+}
+
+.remove_task a {
+  text-decoration: none;
+  color: #aaaaaa;
+  font-family: monospace;
+}
+
+.remove_task a:hover {
+  color: white;
+}
+
+.task .description {
+  padding: 10px;
+  background: #dde7f0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-family: Roboto;
+  font-size: 12px;
+  white-space: pre-wrap;
+}

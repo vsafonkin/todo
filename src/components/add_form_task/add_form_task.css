@@ -1,0 +1,43 @@
+.add_form {
+  width: 240px;
+  background: #9eb69b;
+  padding: 18px;
+  font-family: monospace;
+  position: absolute;
+}
+
+.add_form a {
+  color: #eeeeee;
+}
+
+.add_form a:hover {
+  color: white;
+}
+
+.task_title {
+  width: 100%;
+}
+
+.task_description {
+  width: 100%;
+  height: 200px;
+  margin-top: 3px;
+}
+
+.buttons {
+  background: #80967d;
+  border: 1px solid #80967d;
+  border-radius: 3px;
+  color: white;
+  margin-top: 3px;
+  font-family: monospace;
+}
+
+.buttons:hover {
+  background: #4f614d;
+  border: 1px solid #4f614d;
+}
+
+.cancel {
+  float: right;
+}

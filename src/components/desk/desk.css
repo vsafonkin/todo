@@ -1,0 +1,23 @@
+.desk {
+  min-height: 300px;
+  width: 246px;
+  background: #e6d6ac;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.desk_title {
+  color: #333333;
+  text-align: center;
+  font-family: Roboto;
+  padding-bottom: 10px;
+}
+
+.tune_desk {
+  padding-bottom: 5px;
+}
+
+.wrap_tasks {
+  min-height: 260px;
+}

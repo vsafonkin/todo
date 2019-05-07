@@ -1,0 +1,16 @@
+.add_form_desk {
+  width: 174px;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 3px;
+  background: #9eb69b;
+  font-family: monospace;
+}
+
+.add_form_desk a {
+  color: #eeeeee;
+}
+
+.add_form_desk a:hover {
+  color: white;
+}

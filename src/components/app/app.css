@@ -1,0 +1,16 @@
+#App {
+  width: auto;
+  margin: auto;
+}
+
+#header {
+  height: 60px;
+  background:#9eb69b;
+  color: white;
+}
+
+#content {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}

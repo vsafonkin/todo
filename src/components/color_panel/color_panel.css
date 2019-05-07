@@ -1,0 +1,22 @@
+.color_panel {
+}
+
+.color_panel a {
+  text-decoration: none;
+  color: #aaaaaa;
+  font-family: monospace;
+}
+
+.color_panel a:hover {
+  color: white;
+}
+
+.colors {
+  display: flex;
+  margin-top: 5px;
+}
+
+.color_item {
+  width: 20px;
+  height: 20px;
+}
