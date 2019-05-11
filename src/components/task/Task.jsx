@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeTask, setStatus } from "../../actions";
+import { removeTask } from "../../actions";
 import "./task.css";
 
 class Task extends React.Component {
@@ -11,12 +11,7 @@ class Task extends React.Component {
   render() {
     const { title, description, id } = { ...this.props.task };
     return (
-      <div
-        className="task"
-        style={{
-          opacity: this.props.isDragging ? 0 : 1
-        }}
-      >
+      <div className="task" draggable="true" id={id}>
         <div className="wrap">
           <div className="title">{title}</div>
           <div className="remove_task">
@@ -39,8 +34,7 @@ class Task extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeTask: task_id => dispatch(removeTask(task_id)),
-    setStatus: (task_id, status) => dispatch(setStatus(task_id, status))
+    removeTask: task_id => dispatch(removeTask(task_id))
   };
 };
 

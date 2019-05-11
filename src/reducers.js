@@ -4,7 +4,7 @@ import {
   LOAD_TASKS,
   ADD_TASK,
   REMOVE_TASK,
-  SET_STATUS,
+  SET_DESK_ID,
   SET_DESK_COLOR,
   ADD_DESK,
   REMOVE_DESK
@@ -30,7 +30,7 @@ function taskReducer(state = initialStateTask, action) {
           //новую задачу добавляем в начало массива
           {
             id: new_id,
-            status: action.task.desk_id,
+            status: +action.task.desk_id,
             title: action.task.title,
             description: action.task.description
           },
@@ -41,14 +41,14 @@ function taskReducer(state = initialStateTask, action) {
       return {
         ...state,
         tasks: state.tasks.filter(item => {
-          return item.id != action.id;
+          return item.id !== +action.id;
         })
       };
-    case SET_STATUS:
+    case SET_DESK_ID:
       const tasks = [...state.tasks];
       tasks.forEach(item => {
-        if (item.id === action.task_id) {
-          item.status = action.status;
+        if (item.id === +action.taskId) {
+          item.status = +action.deskId;
         }
       });
       return { ...state, tasks };
@@ -80,7 +80,7 @@ function deskReducer(state = initialStateDesk, action) {
       return {
         ...state,
         desks: state.desks.filter(item => {
-          return item.id != action.id;
+          return item.id !== +action.id;
         })
       };
     case SET_DESK_COLOR:

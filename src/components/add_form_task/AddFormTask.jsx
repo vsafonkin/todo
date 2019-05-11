@@ -11,6 +11,12 @@ class AddFormTask extends React.Component {
     desk_id: 0
   };
 
+  componentDidMount() {
+    if (this.props.desks.length) {
+      this.setState({ desk_id: this.props.desks.id });
+    }
+  }
+
   handleClick = () => {
     this.setState({
       active: !this.state.active,
@@ -40,7 +46,7 @@ class AddFormTask extends React.Component {
       active: false,
       title: "",
       text: "",
-      desk_id: 0
+      desk_id: this.props.desks[0].id
     });
   };
 

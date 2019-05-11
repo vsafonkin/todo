@@ -29,7 +29,11 @@ class Desk extends React.Component {
     });
 
     return (
-      <div className="desk" style={{ background: this.props.color }}>
+      <div
+        className="desk"
+        id={this.props.desk_id}
+        style={{ background: this.props.color }}
+      >
         <div className="tune_desk">
           <img
             src={hamb}

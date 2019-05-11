@@ -4,7 +4,7 @@ export const ADD_TASK = "ADD_TASK";
 export const ADD_DESK = "ADD_DESK";
 export const REMOVE_TASK = "REMOVE_TASK";
 export const REMOVE_DESK = "REMOVE_DESK";
-export const SET_STATUS = "SET_STATUS";
+export const SET_DESK_ID = "SET_DESK_ID";
 export const SET_DESK_COLOR = "SET_DESK_COLOR";
 
 export function loadDesks(data) {
@@ -49,11 +49,12 @@ export function removeTask(id) {
   };
 }
 
-export function setStatus(task_id, status) {
+export function setDeskId(taskId, deskId, closestTaskId) {
   return {
-    type: SET_STATUS,
-    task_id: task_id,
-    status: status
+    type: SET_DESK_ID,
+    taskId: taskId,
+    deskId: deskId,
+    closestTaskId: closestTaskId
   };
 }
 

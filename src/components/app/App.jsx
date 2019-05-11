@@ -14,14 +14,14 @@ function load_data(url, callback) {
 
 class App extends React.Component {
   componentDidMount() {
-    const data = JSON.parse(localStorage.getItem("todo_19811210vs"));
-    if (!data) {
-      load_data("tasks.json", this.props.loadTasks);
-      load_data("desks.json", this.props.loadDesks);
-    } else {
-      this.props.loadDesks(data.desks);
-      this.props.loadTasks(data.tasks);
-    }
+    //const data = JSON.parse(localStorage.getItem("todo_19811210vs"));
+    //if (!data) {
+    load_data("tasks.json", this.props.loadTasks);
+    load_data("desks.json", this.props.loadDesks);
+    //} else {
+    //  this.props.loadDesks(data.desks);
+    //  this.props.loadTasks(data.tasks);
+    //}
   }
 
   componentDidUpdate() {
