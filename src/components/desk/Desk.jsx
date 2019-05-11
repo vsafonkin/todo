@@ -1,28 +1,10 @@
 import React from "react";
-import { DropTarget } from "react-dnd";
 import { connect } from "react-redux";
 import Task from "../task/Task.jsx";
 import ColorPanel from "../color_panel/ColorPanel.jsx";
 import { removeDesk } from "../../actions";
 import "./desk.css";
 import hamb from "./hamb.svg";
-
-export const ItemTypes = {
-  TASK: "Task"
-};
-
-const deskTarget = {
-  drop(props) {
-    return { desk_id: props.desk_id };
-  }
-};
-
-function collect(connect, monitor) {
-  return {
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver()
-  };
-}
 
 class Desk extends React.Component {
   state = {
@@ -46,7 +28,7 @@ class Desk extends React.Component {
       return <Task key={item.id} task={item} />;
     });
 
-    return this.props.connectDropTarget(
+    return (
       <div className="desk" style={{ background: this.props.color }}>
         <div className="tune_desk">
           <img
@@ -88,7 +70,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-Desk = DropTarget(ItemTypes.TASK, deskTarget, collect)(Desk);
 export default connect(
   null,
   mapDispatchToProps

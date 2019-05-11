@@ -1,32 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { removeTask, setStatus } from "../../actions";
-import { DragSource } from "react-dnd";
 import "./task.css";
-
-export const ItemTypes = {
-  TASK: "Task"
-};
-
-const taskSource = {
-  beginDrag(props) {
-    return { task_id: props.task.id };
-  },
-  endDrag(props, monitor) {
-    if (monitor.getDropResult()) {
-      const desk_id = monitor.getDropResult().desk_id;
-      props.setStatus(props.task.id, desk_id);
-    }
-    return {};
-  }
-};
-
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  };
-}
 
 class Task extends React.Component {
   handleClick = event => {
@@ -35,7 +10,7 @@ class Task extends React.Component {
 
   render() {
     const { title, description, id } = { ...this.props.task };
-    return this.props.connectDragSource(
+    return (
       <div
         className="task"
         style={{
@@ -69,7 +44,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-Task = DragSource(ItemTypes.TASK, taskSource, collect)(Task);
 export default connect(
   null,
   mapDispatchToProps
