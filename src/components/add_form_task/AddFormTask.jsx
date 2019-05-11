@@ -81,11 +81,15 @@ class AddFormTask extends React.Component {
               />
             </p>
             <div className="select_desk">
-              <select onChange={this.handleSelectChange}>
-                {deskSelectList}
-              </select>
+              {this.props.desks.length ? (
+                <select onChange={this.handleSelectChange}>
+                  {deskSelectList}
+                </select>
+              ) : (
+                "все добавленные задачи появятся на первой добавленной доске"
+              )}
             </div>
-            <div className="">
+            <div className="buttons_block">
               <input
                 type="submit"
                 value="добавить"
