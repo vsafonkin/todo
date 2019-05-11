@@ -7,7 +7,8 @@ class AddFormTask extends React.Component {
   state = {
     active: false,
     title: "",
-    text: ""
+    text: "",
+    desk_id: 0
   };
 
   handleClick = () => {
@@ -23,20 +24,34 @@ class AddFormTask extends React.Component {
     this.setState({ [name]: event.target.value });
   };
 
+  handleSelectChange = event => {
+    console.log(event.target.value);
+    this.setState({ desk_id: +event.target.value });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
     this.props.addTask({
       title: this.state.title,
-      description: this.state.text
+      description: this.state.text,
+      desk_id: this.state.desk_id
     });
     this.setState({
       active: false,
       title: "",
-      text: ""
+      text: "",
+      desk_id: 0
     });
   };
 
   render() {
+    const deskSelectList = this.props.desks.map(item => {
+      return (
+        <option key={item.id} value={item.id}>
+          {item.title}
+        </option>
+      );
+    });
     return (
       <div className="add_form">
         {this.state.active || (
@@ -65,6 +80,11 @@ class AddFormTask extends React.Component {
                 placeholder="описание задачи"
               />
             </p>
+            <div className="select_desk">
+              <select onChange={this.handleSelectChange}>
+                {deskSelectList}
+              </select>
+            </div>
             <div className="">
               <input
                 type="submit"

@@ -30,7 +30,7 @@ function taskReducer(state = initialStateTask, action) {
           //новую задачу добавляем в начало массива
           {
             id: new_id,
-            status: 0,
+            status: action.task.desk_id,
             title: action.task.title,
             description: action.task.description
           },

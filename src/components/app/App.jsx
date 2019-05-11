@@ -47,7 +47,7 @@ class App extends React.Component {
     return (
       <div id="App">
         <div id="header">
-          <AddFormTask />
+          <AddFormTask desks={this.props.desks} />
         </div>
         <div id="content">
           {desks}
