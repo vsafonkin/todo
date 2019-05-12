@@ -16,7 +16,7 @@ class ColorPanel extends React.Component {
   };
 
   changeColor = value => () => {
-    this.props.setColor(this.props.desk_id, value);
+    this.props.setColor(+this.props.deskId, value);
   };
 
   colors = [
@@ -64,7 +64,7 @@ class ColorPanel extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setColor: (desk_id, color) => dispatch(setDeskColor(desk_id, color))
+    setColor: (deskId, color) => dispatch(setDeskColor(deskId, color))
   };
 };
 

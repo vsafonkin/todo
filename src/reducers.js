@@ -23,14 +23,16 @@ function taskReducer(state = initialStateTask, action) {
     case LOAD_TASKS:
       return { ...state, tasks: action.tasks };
     case ADD_TASK:
-      const new_id = state.tasks.length ? state.tasks[0].id + 1 : 0; //вычисляем id новой задачи по id последней добавленной
+      //вычисляем id новой задачи по максимальному id в массиве задач, либо ноль, если массив пуст
+      const taskIds = state.tasks.map(item => item.id);
+      const newId = state.tasks.length ? Math.max(...taskIds) + 1 : 0;
       return {
         ...state,
         tasks: [
           //новую задачу добавляем в начало массива
           {
-            id: new_id,
-            status: +action.task.desk_id,
+            id: newId,
+            status: +action.task.deskId,
             title: action.task.title,
             description: action.task.description
           },
@@ -45,12 +47,27 @@ function taskReducer(state = initialStateTask, action) {
         })
       };
     case SET_DESK_ID:
+      //находим индексы перемещаемого элемента и ближайшего к нему
+      //перемещаемому элементу меняем deskId
+      //удаляем перемещаемый элемент из массива и помещаем его в elem
+      //вставляем elem рядом с элементом с полученным closestTaskId
       const tasks = [...state.tasks];
-      tasks.forEach(item => {
-        if (item.id === +action.taskId) {
-          item.status = +action.deskId;
+      let taskIndex;
+      let closestTaskIndex = 0;
+
+      tasks.forEach((item, index) => {
+        if (item.id === action.taskId) {
+          item.status = action.deskId;
+          taskIndex = index;
+        }
+        if (item.id === action.closestTaskId) {
+          closestTaskIndex = index;
         }
       });
+
+      const elem = tasks.splice(taskIndex, 1)[0];
+
+      tasks.splice(closestTaskIndex, 0, elem);
       return { ...state, tasks };
     default:
       return state;
@@ -62,15 +79,14 @@ function deskReducer(state = initialStateDesk, action) {
     case LOAD_DESKS:
       return { ...state, desks: action.desks };
     case ADD_DESK:
-      const new_id = state.desks.length
-        ? state.desks[state.desks.length - 1].id + 1
-        : 0;
+      const deskIds = state.desks.map(item => item.id);
+      const newId = state.desks.length ? Math.max(...deskIds) + 1 : 0;
       return {
         ...state,
         desks: [
           ...state.desks,
           {
-            id: new_id,
+            id: newId,
             title: action.desk.title,
             color: "#b3caaf"
           }
@@ -86,7 +102,7 @@ function deskReducer(state = initialStateDesk, action) {
     case SET_DESK_COLOR:
       const desks = [...state.desks];
       desks.forEach(item => {
-        if (item.id === action.desk_id) {
+        if (item.id === action.deskId) {
           item.color = action.color;
         }
       });

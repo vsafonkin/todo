@@ -29,7 +29,16 @@ class DragDrop extends React.Component {
 
   drop = e => {
     e.preventDefault();
-    this.props.setDeskId(this.dragElement.id, this.dropElement.id);
+    const closestTask = e.target.closest(".task");
+    if (closestTask) {
+      this.props.setDeskId(
+        +this.dragElement.id,
+        +this.dropElement.id,
+        +closestTask.id
+      );
+    } else {
+      this.props.setDeskId(+this.dragElement.id, +this.dropElement.id, 0);
+    }
   };
 
   render() {
@@ -52,7 +61,8 @@ class DragDrop extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDeskId: (taskId, deskId) => dispatch(setDeskId(taskId, deskId))
+    setDeskId: (taskId, deskId, closestTaskId) =>
+      dispatch(setDeskId(taskId, deskId, closestTaskId))
   };
 };
 

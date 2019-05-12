@@ -31,7 +31,7 @@ class Desk extends React.Component {
     return (
       <div
         className="desk"
-        id={this.props.desk_id}
+        id={this.props.deskId}
         style={{ background: this.props.color }}
       >
         <div className="tune_desk">
@@ -42,12 +42,12 @@ class Desk extends React.Component {
           />
           {this.state.tuneActive && (
             <div className="tune_panel">
-              <ColorPanel desk_id={this.props.desk_id} />
+              <ColorPanel deskId={this.props.deskId} />
               <div className="remove_task">
                 {!tasks.length && (
                   <a
                     href="#"
-                    id={this.props.desk_id}
+                    id={this.props.deskId}
                     onClick={this.handleRemoveClick}
                   >
                     удалить доску
@@ -70,7 +70,7 @@ class Desk extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeDesk: desk_id => dispatch(removeDesk(desk_id))
+    removeDesk: deskId => dispatch(removeDesk(deskId))
   };
 };
 

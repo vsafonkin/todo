@@ -58,10 +58,10 @@ export function setDeskId(taskId, deskId, closestTaskId) {
   };
 }
 
-export function setDeskColor(desk_id, color) {
+export function setDeskColor(deskId, color) {
   return {
     type: SET_DESK_COLOR,
-    desk_id: desk_id,
+    deskId: deskId,
     color: color
   };
 }

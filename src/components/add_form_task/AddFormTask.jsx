@@ -8,20 +8,15 @@ class AddFormTask extends React.Component {
     active: false,
     title: "",
     text: "",
-    desk_id: 0
+    deskId: 0
   };
-
-  componentDidMount() {
-    if (this.props.desks.length) {
-      this.setState({ desk_id: this.props.desks.id });
-    }
-  }
 
   handleClick = () => {
     this.setState({
       active: !this.state.active,
       title: "",
-      text: ""
+      text: "",
+      deskId: this.props.desks.length ? this.props.desks[0].id : 0
     });
   };
 
@@ -32,7 +27,7 @@ class AddFormTask extends React.Component {
 
   handleSelectChange = event => {
     console.log(event.target.value);
-    this.setState({ desk_id: +event.target.value });
+    this.setState({ deskId: +event.target.value });
   };
 
   handleSubmit = event => {
@@ -40,13 +35,13 @@ class AddFormTask extends React.Component {
     this.props.addTask({
       title: this.state.title,
       description: this.state.text,
-      desk_id: this.state.desk_id
+      deskId: this.state.deskId
     });
     this.setState({
       active: false,
       title: "",
       text: "",
-      desk_id: this.props.desks[0].id
+      deskId: this.props.desks.length ? this.props.desks[0].id : 0
     });
   };
 
