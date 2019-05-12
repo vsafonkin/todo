@@ -34,7 +34,7 @@ class Task extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeTask: task_id => dispatch(removeTask(task_id))
+    removeTask: taskId => dispatch(removeTask(taskId))
   };
 };
 

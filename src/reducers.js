@@ -51,9 +51,10 @@ function taskReducer(state = initialStateTask, action) {
       //перемещаемому элементу меняем deskId
       //удаляем перемещаемый элемент из массива и помещаем его в elem
       //вставляем elem рядом с элементом с полученным closestTaskId
+      //если ближайший элемент не передан, вставляем перемещаемый элемент в конец массива
       const tasks = [...state.tasks];
       let taskIndex;
-      let closestTaskIndex = 0;
+      let closestTaskIndex = tasks.length;
 
       tasks.forEach((item, index) => {
         if (item.id === action.taskId) {
@@ -66,7 +67,7 @@ function taskReducer(state = initialStateTask, action) {
       });
 
       const elem = tasks.splice(taskIndex, 1)[0];
-
+      console.log(closestTaskIndex);
       tasks.splice(closestTaskIndex, 0, elem);
       return { ...state, tasks };
     default:
