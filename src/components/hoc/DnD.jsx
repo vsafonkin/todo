@@ -5,6 +5,7 @@ import { setDeskId } from "../../actions.js";
 class DragDrop extends React.Component {
   dragElement = null;
   dropElement = null;
+  closestElement = null;
 
   dragStart = e => {
     this.dragElement = e.target;
@@ -37,7 +38,7 @@ class DragDrop extends React.Component {
         +closestTask.id
       );
     } else {
-      this.props.setDeskId(+this.dragElement.id, +this.dropElement.id, 0);
+      this.props.setDeskId(+this.dragElement.id, +this.dropElement.id);
     }
   };
 
