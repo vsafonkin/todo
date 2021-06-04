@@ -1,3 +1,3 @@
-<b>Todo приложение</b><br>
+<b>Best todo app</b><br>
 react + redux<br>
-перейти посмотреть на <a href="https://vsafonkin.github.io">vsafonkin.github.io</a>
+Go to <a href="https://vsafonkin.github.io">vsafonkin.github.io</a>
